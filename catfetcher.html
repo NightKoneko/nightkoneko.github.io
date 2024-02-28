@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="css/catfetcher.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header id="site_header">
+    <h1 class="coolfontforh">cassandra <sub>nightkoneko</sub></h1>
+    <nav>
+
+      <span><a href="/" class="active">home</a></span>
+      
+      <span>|</span>
+
+      <span><a href="/tictactoe.html" class="active">tic-tac-toe</a></span>
+
+      <span>|</span>
+
+      <span><a href="/catfetcher.html" class="active">cat game</a></span>
+
+    </nav>
+  </header>
+  <h1 id="meowkittenpurrh1">Identify the correct breed of the cat in the picture below to earn a miscellaneous cat fact!
+  </h1>
+  <h2 id="hahaha">Press the "Generate cat" button to generate a cat picture</h2>
+  <button id="generateCat"> Generate cat </button>
+  <div id="catContainerImage"></div>
+  <div id="guessy">
+    <p>Enter your breed guess here:</p>
+    <input id="guessBox" type="text">
+    <button id="submitGuess" onclick="submitGuess()">Submit</button>
+    <button id="hintButton" onclick="revealHint()">Hint</button>
+    <div id="hintBox"></div>
+  </div>
+  <h1 id=incorrect>Incorrect!</h1>
+  <h1 id=correct>Correct!</h1>
+  <div id="theCatName"></div>
+  <div id="facter"></div>
+  <div id="theDescription"></div>
+</body>
+<script src="js/catfetcher.js"></script>
+
+</html>
