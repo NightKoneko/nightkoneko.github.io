@@ -1,9 +1,9 @@
-//where to put this stuff eh just put it at the beginning lol
+// where to put this stuff eh just put it at the beginning lol
 let catSayInput = document.querySelector("#generateCat");
 catSayInput.addEventListener("click", generate_random_cat);
 const hintBox = document.querySelector("#hintBox");
 
-//handle random cat breed und fact generation
+// handle random cat breed und fact generation
 async function get_random_cat() {
   const name_url = "https://api.thecatapi.com/v1/breeds";
   const name_response = await fetch(name_url);
@@ -11,7 +11,7 @@ async function get_random_cat() {
   const randomBreed = name_response_json[Math.floor(Math.random() * name_response_json.length)];
   const breedName = randomBreed.name;
   const breedId = randomBreed.id;
-  //me when breed_id endpoint exists
+  // me when breed_id endpoint exists
   const url = `https://api.thecatapi.com/v1/images/search?breed_id=${breedId}`;
   const response = await fetch(url);
   const responseJson = await response.json();
@@ -29,7 +29,7 @@ async function get_random_cat() {
   };
 }
 
-//fixed
+// fixed
 function generate_random_cat() {
   document.getElementById("correct").style.display = 'none';
   document.getElementById("incorrect").style.display = 'none';
@@ -58,13 +58,13 @@ function generate_random_cat() {
     document.getElementById("facter").style.display = 'none';
     document.getElementById("theDescription").style.display = 'none';
 
-    // Initialize or retrieve current score
+    // get current score
     let score = localStorage.getItem("catGuessScore");
     if (score === null) {
-      score = 0; // If no score is found, start at 0
+      score = 0;
       localStorage.setItem("catGuessScore", score);
     }
-    updateScoreDisplay(score); // Update score display on the page
+    updateScoreDisplay(score); // update score display on the page
 
     // handle guess submission
     const guessBtn = document.querySelector("#submitGuess");
@@ -76,10 +76,10 @@ function generate_random_cat() {
         document.getElementById("theDescription").style.display = 'block';
         document.getElementById("correct").style.display = 'block';
         document.getElementById("incorrect").style.display = 'none';
-        updateScore(1); // Increase score
+        updateScore(1); 
       } else {
         document.getElementById("incorrect").style.display = 'block';
-        updateScore(-1); // Decrease score
+        updateScore(-1); 
       }
     }
 
@@ -107,31 +107,29 @@ function updateScore(change) {
 }
 
 function updateScoreDisplay() {
-  // Fetch the score directly within the function
+  // fetch the score
   let score = localStorage.getItem("catGuessScore");
   if (score === null) {
-    score = 0; // If no score is found, start at 0
+    score = 0; // if no score is found, start at 0
   }
   const scoreDisplay = document.querySelector("#score");
   scoreDisplay.innerHTML = `Score: ${score}`;
 }
 
-// This ensures your score is updated as soon as the page loads
 document.addEventListener("DOMContentLoaded", function() {
   updateScoreDisplay();
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  updateScoreDisplay(); // Make sure this is called to update the score on page load
+  updateScoreDisplay(); 
 
-  // Add an event listener to the reset button
   const resetButton = document.querySelector("#resetScore");
   resetButton.addEventListener("click", function() {
-    resetScore(); // Call the resetScore function when the button is clicked
+    resetScore(); 
   });
 });
 
 function resetScore() {
-  localStorage.setItem("catGuessScore", "0"); // Reset the score in localStorage
-  updateScoreDisplay(); // Update the score display on the page
+  localStorage.setItem("catGuessScore", "0"); // reset the score in localStorage
+  updateScoreDisplay(); // update the score display on the page
 }
